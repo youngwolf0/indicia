@@ -1,0 +1,6 @@
+<?php
+
+/**
+ * @file
+ * Logs IP and timestamp of visiters to this site.
+ */

@@ -1,0 +1,38 @@
+<?php
+
+/**
+ * @file
+ * Install behaviour for the indicia_logger module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function indicia_logger_schema() {
+  $schema = [];
+  $schema['indicia_logger'] = array(
+    'description' => t('Table for logging visits to the site.'),
+    'fields' => array(
+      'id' => array(
+        'description' => 'The primary key of this table.',
+        'type' => 'serial',
+        'not null' => TRUE
+      ),
+      'datetime' => array(
+        'description' => 'The datetime of the visit.',
+        'type' => 'varchar',
+        'mysql_type' => 'datetime',
+        'not null' => TRUE,
+      ),
+      'type' => array(
+        'description' => 'The ip of the visitor.',
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE
+      ),
+    ),
+    'primary key' => array('id'),
+  );
+  return $schema;
+}
+

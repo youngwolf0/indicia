@@ -1,0 +1,4 @@
+name = Indicia logger
+description = Logs IP and timestamp of visiters to this site.
+package = Colin
+core = 7.x
