@@ -9,7 +9,7 @@
   <tbody>
   <tr>
     <th colspan="2">
-      Log of visits to this site <?= $variables['site_name']; ?>
+      Log of visits to <?= $variables['site_name']; ?>
     </th>
   </tr>
   <tr>
