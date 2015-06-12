@@ -39,13 +39,16 @@ function indicia_logger_block_info() {
  * Implements hook_block_view().
  */
 function indicia_logger_block_view($delta = 'indicia_logger') {
+  // Create empty arrays.
   $variables = [];
-  $block = array();
+  $block = [];
+  // Set site name for template.
+  $variables['site_name'] = variable_get('site_name');
   // Load data from db.
   $results = db_query('select * from {indicia_logger}');
-  foreach($results as $result) {
-    $variables['log'][] = [
-      'result' => $result->timestamp,
+  foreach ($results as $result) {
+    $variables['logs'][] = [
+      'timestamp' => $result->timestamp,
       'user_ip' => $result->user_ip
     ];
   }
