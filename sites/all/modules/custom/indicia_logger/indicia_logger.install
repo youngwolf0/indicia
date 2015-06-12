@@ -16,19 +16,20 @@ function indicia_logger_schema() {
       'id' => array(
         'description' => 'The primary key of this table.',
         'type' => 'serial',
-        'not null' => TRUE
+        'not null' => TRUE,
+        'unsigned' => TRUE,
       ),
-      'datetime' => array(
+      'timestamp' => array(
         'description' => 'The datetime of the visit.',
         'type' => 'varchar',
         'mysql_type' => 'datetime',
         'not null' => TRUE,
       ),
-      'type' => array(
+      'user_ip' => array(
         'description' => 'The ip of the visitor.',
         'type' => 'varchar',
         'length' => 32,
-        'not null' => TRUE
+        'not null' => TRUE,
       ),
     ),
     'primary key' => array('id'),

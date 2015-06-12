@@ -4,3 +4,22 @@
  * @file
  * Logs IP and timestamp of visiters to this site.
  */
+
+/**
+ * Implements hook_boot().
+ */
+function indicia_logger_boot() {
+  // Capture current timestamp.
+  $timestamp = REQUEST_TIME;
+  // Convert unix timestamp to MySQL timestamp.
+  $mysql_timestamp = date("Y-m-d H:i:s", $timestamp);
+  // Capture visitors IP address.
+  $user_ip = ip_address();
+  // Store data in database.
+  db_insert('indicia_logger')
+    ->fields(array(
+      'timestamp' => $mysql_timestamp,
+      'user_ip' => $user_ip,
+    ))
+    ->execute();
+}
