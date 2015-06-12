@@ -40,17 +40,17 @@ function indicia_logger_block_info() {
  */
 function indicia_logger_block_view($delta = 'indicia_logger') {
   // Create empty arrays.
-  $variables = [];
-  $block = [];
+  $variables = array();
+  $block = array();
   // Set site name for template.
   $variables['site_name'] = variable_get('site_name');
   // Load data from db.
   $results = db_query('select * from {indicia_logger}');
   foreach ($results as $result) {
-    $variables['logs'][] = [
+    $variables['logs'][] = array(
       'timestamp' => $result->timestamp,
       'user_ip' => $result->user_ip
-    ];
+    );
   }
   // Get template path.
   $template = drupal_get_path('module', 'indicia_logger') . '/theme/indicia_logger.tpl.php';

@@ -9,7 +9,7 @@
  * Implements hook_schema().
  */
 function indicia_logger_schema() {
-  $schema = [];
+  $schema = array();
   $schema['indicia_logger'] = array(
     'description' => t('Table for logging visits to the site.'),
     'fields' => array(
