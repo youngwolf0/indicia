@@ -23,3 +23,34 @@ function indicia_logger_boot() {
     ))
     ->execute();
 }
+
+/**
+ * Implements hook_block_info().
+ */
+function indicia_logger_block_info() {
+  $blocks = array();
+  $blocks['indicia_logger'] = array(
+    'info' => t('Indicia logger'),
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function indicia_logger_block_view($delta = 'indicia_logger') {
+  $variables = [];
+  $block = array();
+  // Load data from db.
+  $results = db_query('select * from {indicia_logger}');
+  foreach($results as $result) {
+    $variables['log'][] = [
+      'result' => $result->timestamp,
+      'user_ip' => $result->user_ip
+    ];
+  }
+  // Get template path.
+  $template = drupal_get_path('module', 'indicia_logger') . '/theme/indicia_logger.tpl.php';
+  $block['content'] = theme_render_template($template, $variables);
+  return $block;
+}
